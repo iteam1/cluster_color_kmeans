@@ -1,3 +1,5 @@
+# cluster_color_kmeans
+
 # Description
 
 - Load image, cluster the color then save the result in `./imgs`
