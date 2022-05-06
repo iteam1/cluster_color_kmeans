@@ -10,11 +10,11 @@ Load image, cluster the color then save the result in `./imgs`
 
 - Show help: `python main.py --help`
 
-![issue1](./img/Capture.PNG)
+![issue1](./imgs/Capture.PNG)
 
 - Run: `python main.py -i ./imgs/parrot.jpg`
 
-![issue2](./img/Capture2.PNG)
+![issue2](./imgs/Capture2.PNG)
 
 # Terminal command
 
