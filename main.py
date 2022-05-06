@@ -47,9 +47,11 @@ if __name__  == '__main__':
     
     # get the name of image
     img_name = args.img
-    #print(img_name.split('.'))
-    origin_name = img_name.split('.')[-2]
-    save_name = origin_name +  '_clustered.jpg' 
+    #print(img_name.split('/'))
+    origin_name = img_name.split('/')[-1]
+    #print(origin_name)
+    save_name = './imgs/' +origin_name.split('.')[0] +  '_clustered.jpg'
+    #print(save_name) 
     # convert image to numpy array
     img_array =  image_to_matrix(args.img)
      
@@ -64,10 +66,19 @@ if __name__  == '__main__':
     cluster_idx,centers,loss = KMeans()(img_flatted,args.Knumber,verbose = False)
         
     # predict
-    img_clustered =KMeans().predict(img_flatted,cluster_idx,centers)
-    print(type(img_clustered))
+    img_clustered =KMeans().predict(img_flatted,cluster_idx,centers,h,w,ch)
+    #print(type(img_clustered))
     
     # stop counting processing time
     t_done = time.time()
     
-    print(f"done! Timing: {t_done - t_start}")
+    if args.compare:
+        img_clustered = np.hstack((img_array,img_clustered))
+    
+    # display
+    plt.figure()
+    plt.imshow(img_clustered)
+    plt.title(save_name)
+    plt.savefig(save_name)
+    
+    print(f"done! Timing: {t_done - t_start} (s)")

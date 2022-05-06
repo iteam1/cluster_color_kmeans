@@ -1,11 +1,20 @@
 # Description
 
-Load image, cluster the color then save the result in `imgs`
+Load image, cluster the color then save the result in `./imgs`
+
+![result1](./imgs/parrot_clustered.jpg)
+
+![result2](./imgs/flower_clustered.jpg)
 
 # How to run?
 
 - Show help: `python main.py --help`
+
+![issue1](./img/Capture.PNG)
+
 - Run: `python main.py -i ./imgs/parrot.jpg`
+
+![issue2](./img/Capture2.PNG)
 
 # Terminal command
 

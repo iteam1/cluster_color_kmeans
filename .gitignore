@@ -1,5 +1,6 @@
 # virtual enviroment
 env
-
 # pycache
 __pycache__
+# notebook
+.ipynb_checkpoints

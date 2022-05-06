@@ -111,13 +111,15 @@ class KMeans(object):
 #         self.loss = loss
         return cluster_idx,centers,loss
     
-    def predict(self,image_flatten,cluster_idx,centers):
+    def predict(self,image_flatten,cluster_idx,centers,h,w,ch):
         '''
         Arguments
             image_flatten --- (numpy array) image flatten
             cluster_idx --- cluster labels
-            centers --- (K,D) centers array 
-        
+            centers --- (K,D) centers array
+            h --- image height
+            w --- image width
+            ch --- image channels       
         Return:
             color label clustered
         '''
@@ -126,7 +128,7 @@ class KMeans(object):
         y_pred = np.argmin(distances,axis = 1)
         for i in range(len(y_pred)):
             updated_image_values[i] = centers[y_pred[i]]
-        updated_image_values = updated_image_values.reshape(r,c,ch)
+        updated_image_values = updated_image_values.reshape(h,w,ch)
         return updated_image_values
     
     def find_optimal_num_clusters(self,data,max_K = 15):
