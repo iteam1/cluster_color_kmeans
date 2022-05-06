@@ -1,3 +1,4 @@
+import numpy as np
 # set random seed so output is all name
 np.random.seed(1)
 
