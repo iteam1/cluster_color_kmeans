@@ -19,6 +19,7 @@ class KMeans(object):
         mul = np.dot(x1,x2.T)
         dists = np.sqrt(abs(x1_sum_square[:,np.newaxis] + x2_sum_square - 2 * mul))
         return dists
+    
     def _init_centers(self,points,K,**kwargs):
         '''
         Arguments:
@@ -34,6 +35,7 @@ class KMeans(object):
             rand_index = np.random.randint(N)
             centers[number] = points[rand_index] # random choice in points with rand_index
         return centers
+    
     def _update_assignment(self,centers,points):
         '''
         Arguments:
@@ -47,6 +49,7 @@ class KMeans(object):
         distances = self.pairwise_dist(points,centers)
         cluster_idx = np.argmin(distances,axis =1)
         return cluster_idx
+    
     def _update_centers(self,old_centers,cluster_idx,points):
         '''
         Arguments:
@@ -61,6 +64,7 @@ class KMeans(object):
         for i in range(K):
             new_centers[i] = np.mean(points[cluster_idx == i],axis = 0) # find mean of points which have cluster_idx == label
         return new_centers
+    
     def _get_loss(self,centers,cluster_idx,points):
         '''
         Arguments:
@@ -76,6 +80,7 @@ class KMeans(object):
         for i in range(N):
             loss += np.square(dists[i][cluster_idx[i]])
         return loss
+    
     def __call__(self,points,K,max_iters = 100,abs_tol = 1e-16,rel_tol = 1e-16,verbose = False,**kwargs):
         '''
         Arguments:

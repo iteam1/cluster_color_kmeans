@@ -7,17 +7,21 @@
 
 ![result2](./imgs/flower_clustered.jpg)
 
+![result3](./imgs/parrot_optimal_plot.jpg)
+
 # How to run?
 
 - Show help: `python main.py --help`
 
-![issue1](./imgs/Capture.PNG)
+![run1](./imgs/Capture.PNG)
 
 - Run clustering: `python main.py -i ./imgs/parrot.jpg`
 
+![run2](./imgs/Capture2.PNG)
+
 - Run finding optimal: `python main.py -i ./imgs/parrot.jpg -o`
 
-![issue2](./imgs/Capture2.PNG)
+![run3](./imgs/Capture3.PNG)
 
 # Terminal command
 

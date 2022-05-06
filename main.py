@@ -12,6 +12,7 @@ parser.add_argument('-k','--Knumber',type = int,help = 'The number of color clus
 parser.add_argument('-c','--compare',action = 'store_true', help = 'option to compare size by size')
 parser.add_argument('-m','--Kmax',type = int,help = 'The maximum number of color clustered for finding optimal',default = 5)
 parser.add_argument('-o','--optimal',action = 'store_true', help = 'option to find the optimal number')
+parser.add_argument('-d','--display',action = 'store_true', help = 'option to find display the result')
 # create arguments
 args = parser.parse_args()
 
@@ -71,7 +72,9 @@ if __name__  == '__main__':
         plt.plot(step,loss_val)
         plt.title(plot_name)
         plt.savefig(plot_name)
-        plt.show()
+        
+        if args.display:
+            plt.show()
     
     # else meaning you cluster the image    
     else:  
@@ -90,6 +93,9 @@ if __name__  == '__main__':
         plt.imshow(img_clustered)
         plt.title(save_name)
         plt.savefig(save_name)
+        
+        if args.display:
+            plt.show()
     
     # stop counting processing time
     t_done = time.time()
