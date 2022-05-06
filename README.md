@@ -5,7 +5,8 @@
 - Activate virtual enviroment on **Window**: `cd env/Scripts` + `activate`
 - Activate  virtual enviroment on **Linux**: `source env/bin/activate`
 - Dectivate virtual enviroment: `deactivate`
-- Export required libraries: ``
+- Export required libraries: `pip freeze > requirments.txt`
+- Install all required libraries: `pip install -r requirements.txt`
 
 # References
 
