@@ -1,6 +1,7 @@
 # Description
 
-Load image, cluster the color then save the result in `./imgs`
+- Load image, cluster the color then save the result in `./imgs`
+- *(New)* find the optimal color number of image
 
 ![result1](./imgs/parrot_clustered.jpg)
 
@@ -12,7 +13,9 @@ Load image, cluster the color then save the result in `./imgs`
 
 ![issue1](./imgs/Capture.PNG)
 
-- Run: `python main.py -i ./imgs/parrot.jpg`
+- Run clustering: `python main.py -i ./imgs/parrot.jpg`
+
+- Run finding optimal: `python main.py -i ./imgs/parrot.jpg -o`
 
 ![issue2](./imgs/Capture2.PNG)
 

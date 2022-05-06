@@ -10,6 +10,8 @@ parser = argparse.ArgumentParser(description = 'Use Kmeans to cluster color in t
 parser.add_argument('-i','--img',type = str, help = 'directory to image', required = True)
 parser.add_argument('-k','--Knumber',type = int,help = 'The number of color clustered',default = 5)
 parser.add_argument('-c','--compare',action = 'store_true', help = 'option to compare size by size')
+parser.add_argument('-m','--Kmax',type = int,help = 'The maximum number of color clustered for finding optimal',default = 5)
+parser.add_argument('-o','--optimal',action = 'store_true', help = 'option to find the optimal number')
 # create arguments
 args = parser.parse_args()
 
@@ -51,6 +53,7 @@ if __name__  == '__main__':
     origin_name = img_name.split('/')[-1]
     #print(origin_name)
     save_name = './imgs/' +origin_name.split('.')[0] +  '_clustered.jpg'
+    plot_name = './imgs/' +origin_name.split('.')[0] +  '_optimal_plot.jpg'
     #print(save_name) 
     # convert image to numpy array
     img_array =  image_to_matrix(args.img)
@@ -62,23 +65,33 @@ if __name__  == '__main__':
     # reshape the image to flatten
     img_flatted = img_array.reshape(h*w,ch)
     
-    # cluster
-    cluster_idx,centers,loss = KMeans()(img_flatted,args.Knumber,verbose = False)
+    # if you find the optimal function
+    if args.optimal:
+        step,loss_val = KMeans().find_optimal_num_clusters(img_flatted,max_K = args.Kmax)
+        plt.plot(step,loss_val)
+        plt.title(plot_name)
+        plt.savefig(plot_name)
+        plt.show()
+    
+    # else meaning you cluster the image    
+    else:  
+        # cluster
+        cluster_idx,centers,loss = KMeans()(img_flatted,args.Knumber,verbose = False)
+            
+        # predict
+        img_clustered =KMeans().predict(img_flatted,cluster_idx,centers,h,w,ch)
+        #print(type(img_clustered))
         
-    # predict
-    img_clustered =KMeans().predict(img_flatted,cluster_idx,centers,h,w,ch)
-    #print(type(img_clustered))
+        if args.compare:
+            img_clustered = np.hstack((img_array,img_clustered))
+        
+        # display
+        plt.figure()
+        plt.imshow(img_clustered)
+        plt.title(save_name)
+        plt.savefig(save_name)
     
     # stop counting processing time
     t_done = time.time()
-    
-    if args.compare:
-        img_clustered = np.hstack((img_array,img_clustered))
-    
-    # display
-    plt.figure()
-    plt.imshow(img_clustered)
-    plt.title(save_name)
-    plt.savefig(save_name)
-    
+        
     print(f"done! Timing: {t_done - t_start} (s)")

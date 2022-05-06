@@ -131,7 +131,7 @@ class KMeans(object):
         updated_image_values = updated_image_values.reshape(h,w,ch)
         return updated_image_values
     
-    def find_optimal_num_clusters(self,data,max_K = 15):
+    def find_optimal_num_clusters(self,data,max_K = 15,mark = True):
         '''
         Plots loss values for different number of clusters in K-means
         Arguments:
@@ -140,11 +140,12 @@ class KMeans(object):
         Return:
             None (plot loss values against number of clusters)
         '''
-        y_val = []#np.empty(max_K)
+        y_val = [] # np.empty(max_K)
         for i in range(max_K):
-            cluster_idx,centers,loss = KMeans()(data,i+1) #cluster_idx, centers, y_val[i] = KMeans()(data, i + 1)
+            cluster_idx,centers,loss = self.__call__(data,i+1) #cluster_idx, centers, y_val[i] = KMeans()(data, i + 1)
             y_val.append(loss[-1]) # y_val[i] = loss[-1]
-            print(f"iter: {i}, loss: {y_val[-1]}")
-        plt.plot(np.arange(max_K) + 1,y_val)
-        plt.show()
-        return y_val
+            if mark:
+                print(f"iter: {i}, loss: {y_val[-1]}")
+        # plt.plot(np.arange(max_K) + 1,y_val)
+        # plt.show()
+        return np.arange(max_K) + 1,y_val
