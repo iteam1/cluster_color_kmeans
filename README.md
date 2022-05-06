@@ -1,6 +1,14 @@
+# Description
+
+Load image, cluster the color then save the result in `imgs`
+
 # How to run?
 
+- Show help: `python main.py --help`
+- Run: `python main.py -i ./imgs/parrot.jpg`
+
 # Terminal command
+
 - Create virtual enviroment: `virtualenv env`
 - Activate virtual enviroment on **Window**: `cd env/Scripts` + `activate`
 - Activate  virtual enviroment on **Linux**: `source env/bin/activate`
