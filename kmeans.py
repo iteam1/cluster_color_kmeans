@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.spatial.distance import cdist
 # set random seed so output is all name
 np.random.seed(1)
 

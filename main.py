@@ -2,11 +2,13 @@ import argparse
 import numpy as np 
 import matplotlib.pyplot as plt
 from kmeans import KMeans
+import time
 
 # init parser
 parser = argparse.ArgumentParser(description = 'Use Kmeans to cluster color in the image')
 # add argument to parser
 parser.add_argument('-i','--img',type = str, help = 'directory to image', required = True)
+parser.add_argument('-k','--Knumber',type = int,help = 'The number of color clustered',default = 5)
 parser.add_argument('-c','--compare',action = 'store_true', help = 'option to compare size by size')
 # create arguments
 args = parser.parse_args()
@@ -38,8 +40,34 @@ def image_to_matrix(image_file,grays = False):
         img = new_img
     return img
 
-# init model
-model = KMeans()
-
 if __name__  == '__main__':
-    print('done!')
+    
+    # start counting processing time
+    t_start  = time.time()
+    
+    # get the name of image
+    img_name = args.img
+    #print(img_name.split('.'))
+    origin_name = img_name.split('.')[-2]
+    save_name = origin_name +  '_clustered.jpg' 
+    # convert image to numpy array
+    img_array =  image_to_matrix(args.img)
+     
+    h = img_array.shape[0]
+    w = img_array.shape[1]
+    ch = img_array.shape[2]
+    
+    # reshape the image to flatten
+    img_flatted = img_array.reshape(h*w,ch)
+    
+    # cluster
+    cluster_idx,centers,loss = KMeans()(img_flatted,args.Knumber,verbose = False)
+        
+    # predict
+    img_clustered =KMeans().predict(img_flatted,cluster_idx,centers)
+    print(type(img_clustered))
+    
+    # stop counting processing time
+    t_done = time.time()
+    
+    print(f"done! Timing: {t_done - t_start}")
