@@ -26,7 +26,8 @@
 ![run3](./imgs/Capture3.PNG)
 
 # Terminal command
-
+- Generate SSH: `ssh-geygen` 
+- Cat pulish SSH: `cat <your_ssh_dir>/id_rsa.pub`
 - Create virtual enviroment: `virtualenv env`
 - Activate virtual enviroment on **Window**: `cd env/Scripts` + `activate`
 - Activate  virtual enviroment on **Linux**: `source env/bin/activate`
