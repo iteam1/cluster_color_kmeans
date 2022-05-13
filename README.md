@@ -1,6 +1,6 @@
 # cluster_color_kmeans
 
-# Description
+### Description
 
 - Load image, cluster the color then save the result in `./imgs`
 - *(New)* find the optimal color number of image
@@ -11,7 +11,7 @@
 
 ![result3](./imgs/parrot_optimal_plot.jpg)
 
-# How to run?
+### How to run?
 
 - Show help: `python main.py --help`
 
@@ -25,7 +25,7 @@
 
 ![run3](./imgs/Capture3.PNG)
 
-# Terminal command
+### Terminal command
 - Generate SSH: `ssh-geygen` 
 - Cat pulish SSH: `cat <your_ssh_dir>/id_rsa.pub`
 - Setting your commit email: `$ git config --global user.email "email@example.com"`
@@ -38,7 +38,7 @@
 - Export required libraries: `pip freeze > requirments.txt`
 - Install all required libraries: `pip install -r requirements.txt`
 
-# References
+### References
 
 https://www.machinelearningplus.com/predictive-modeling/k-means-clustering/
 
