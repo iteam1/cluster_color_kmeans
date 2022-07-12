@@ -40,10 +40,10 @@
 
 ### References
 
-https://www.machinelearningplus.com/predictive-modeling/k-means-clustering/
+[k-means-clustering](https://www.machinelearningplus.com/predictive-modeling/k-means-clustering/)
 
-https://www.askpython.com/python/examples/k-means-clustering-from-scratch
+[k-means-clustering-from-scratch](https://www.askpython.com/python/examples/k-means-clustering-from-scratch)
 
-https://medium.com/@rishit.dagli/build-k-means-from-scratch-in-python-e46bf68aa875
+[build-k-means-from-scratch-in-python](https://medium.com/@rishit.dagli/build-k-means-from-scratch-in-python-e46bf68aa875)
 
-https://analyticsarora.com/k-means-for-beginners-how-to-build-from-scratch-in-python/
+[k-means-for-beginners-how-to-build-from-scratch-in-python](https://analyticsarora.com/k-means-for-beginners-how-to-build-from-scratch-in-python/)
